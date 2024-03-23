@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "email": "teste@gmail.com",
+      "password": "$2a$10$gSSXI/D/7oJ4IOWZeMMC4OidEIWAE5hc94QXn16q0IZo1zYv36urK",
+      "id": "4197b33b-b162-4b68-b4f6-752d8f4b7c7c",
+      "name": "rodrigo"
+    }
+  ],
+  "products": [
+    {
+        "id": 1,
+        "imageUrl": "https://example.com/product1.jpg",
+        "price": 19.99,
+        "description": "Product 1 Description"
+    },
+    {
+        "id": 2,
+        "imageUrl": "https://example.com/product2.jpg",
+        "price": 29.99,
+        "description": "Product 2 Description"
+    },
+    {
+        "id": 3,
+        "imageUrl": "https://example.com/product3.jpg",
+        "price": 39.99,
+        "description": "Product 3 Description"
+    },
+    {
+        "id": 4,
+        "imageUrl": "https://example.com/product4.jpg",
+        "price": 49.99,
+        "description": "Product 4 Description"
+    },
+    {
+        "id": 5,
+        "imageUrl": "https://example.com/product5.jpg",
+        "price": 59.99,
+        "description": "Product 5 Description"
+    },
+    {
+        "id": 6,
+        "imageUrl": "https://example.com/product6.jpg",
+        "price": 69.99,
+        "description": "Product 6 Description"
+    },
+    {
+        "id": 7,
+        "imageUrl": "https://example.com/product7.jpg",
+        "price": 79.99,
+        "description": "Product 7 Description"
+    },
+    {
+        "id": 8,
+        "imageUrl": "https://example.com/product8.jpg",
+        "price": 89.99,
+        "description": "Product 8 Description"
+    },
+    {
+        "id": 9,
+        "imageUrl": "https://example.com/product9.jpg",
+        "price": 99.99,
+        "description": "Product 9 Description"
+    },
+    {
+        "id": 10,
+        "imageUrl": "https://example.com/product10.jpg",
+        "price": 109.99,
+        "description": "Product 10 Description"
+    }
+]
+}
