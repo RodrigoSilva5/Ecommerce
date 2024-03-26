@@ -1,4 +1,4 @@
-import {IntlProvider, FormattedMessage, FormattedNumber} from 'react-intl'
+import {IntlProvider} from 'react-intl'
 
 // Translated messages in French with matching IDs to what you declared
 const messages = {
@@ -15,7 +15,18 @@ const messages = {
     login: "Login",
     login_button: "Enter",
     login_button_signup: "Register Here",
-    signout_button:"Sign out"
+    signout_button:"Sign out",
+    product_list:"View our options",
+    product_description:"Description: ",
+    product_price: "Price: ",
+    button_details: "Details",
+    button_cart: "Add to Cart",
+    title_product: "Product Details",
+    description_product: "Description: ",
+    price_product:" Price: ",
+    remove_item_cart:"Delete from cart"
+
+
     // 
   },
   pt_br: {
@@ -30,14 +41,24 @@ const messages = {
     login: "Entrar",
     login_button: "Entre",
     login_button_signup: "Registre-se Aqui",
-    signout_button:"Sair"
+    signout_button:"Sair",
+    product_list:"Veja nossas opções",
+    product_description:"Descrição: ",
+    product_price: "Preço: ",
+    button_details: "Detalhes",
+    button_cart: "Adicionar ao carrinho",
+    title_product: "Detalhes do Produto",
+    description_product:"Descrição: ",
+    price_product:" Preço: ",
+    remove_item_cart:"Remover do carrinho"
+
     // 
   }
 }
 
 export default function LanguageProvider({children } : {children: React.ReactNode}) {
   return (
-    <IntlProvider messages={messages.en} locale="pt-br" defaultLocale="en">
+    <IntlProvider messages={messages.pt_br} locale="pt-br" defaultLocale="en" >
         {children}
     </IntlProvider>
   )

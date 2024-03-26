@@ -13,6 +13,7 @@ import { client } from '../../network';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import Login from '../../components/login';
+import { redirect } from 'react-router-dom';
 
 interface AuthCredentials {
     email: string;
@@ -102,7 +103,6 @@ export default function AuthProvider({
             email:email,
             password: password
         }
-        console.log(formData)
         try {
           const { data } = await axios.post('http://localhost:3000/login', formData, {
             headers:{
@@ -119,6 +119,13 @@ export default function AuthProvider({
         }
     }, [])
     
+    const signOut = useCallback(() => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        setAccessToken(null)
+        setUser(null);
+        redirect('/')
+    }, []);
 
 
     // memoize
@@ -126,8 +133,8 @@ export default function AuthProvider({
         return {
             user,
             signup,
-            login
-            // signOut
+            login,
+            signOut
         };
     }, [user]);
 

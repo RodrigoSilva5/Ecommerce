@@ -3,12 +3,14 @@ import { FormattedMessage } from "react-intl";
 import { LogoutButton } from "../../styles/button";
 import { StyledLi, StyledUl } from "../../styles/ul_li";
 import { StyledLink } from "../../styles/link";
+import { useAuth } from "../../hooks/auth";
  
 interface NavBarProps {
     links: string[];
 }
 
 export const NavBar = ({ links }: NavBarProps) => {
+    const {signOut} = useAuth()
     return (
         <NavContainer>
             <StyledUl>
@@ -19,7 +21,7 @@ export const NavBar = ({ links }: NavBarProps) => {
                 ))}
             </StyledUl>
             <div>
-                <LogoutButton>
+                <LogoutButton onClick={signOut} >
                     <FormattedMessage
                     id="signout_button"
                     defaultMessage='Sign out'

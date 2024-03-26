@@ -1,8 +1,11 @@
-import { createBrowserRouter } from 'react-router-dom';
+import { Navigate, createBrowserRouter } from 'react-router-dom';
 import { Home } from '../pages/home';
 import PrivateRoute from './PrivateRoute';
 import SignUpPage from '../pages/signUp'
 import LoginPage from '../pages/login';
+import ProductDetailsPage from '../components/productDetails';
+import { ProductsScreen } from '../pages/productsScreen';
+import { CartScreen } from '../components/cart';
 
 
 const router = createBrowserRouter([
@@ -12,7 +15,17 @@ const router = createBrowserRouter([
             <PrivateRoute>
                 <Home />
             </PrivateRoute>
-        )
+        ),
+        children: [
+            {path: "/", element: <ProductsScreen/>},
+            {path: '/product/:productId',element: <ProductDetailsPage />},
+            {path: '/cart',element: <CartScreen/>},
+
+        ]
+    },
+    {
+        path: '/Home',
+        element: <Navigate to="/" replace />,
     },
     {
         path: '/signUp',
@@ -22,6 +35,7 @@ const router = createBrowserRouter([
         path: '/login',
         element: <LoginPage />
     },
+  
 ]);
 
 export default router;

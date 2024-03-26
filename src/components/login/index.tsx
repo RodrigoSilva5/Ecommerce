@@ -28,7 +28,6 @@ export default function Login() {
             try {
                 await login!(values)
                 navigate("/")
-                console.log(values)
 
             } catch (ex) {
                 alert(ex);

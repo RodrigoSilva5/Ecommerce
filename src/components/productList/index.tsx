@@ -1,4 +1,7 @@
+import { FormattedMessage } from "react-intl";
 import ProductCard from "../productCard";
+import { ContainerList } from "./styles";
+import { ProductCardProps } from "../../interfaces/product";
 
 interface Product {
     id: number;
@@ -8,13 +11,18 @@ interface Product {
 }
 
 interface ProductListProps {
-    products: Product[];
+    products: Product[] | ProductCardProps;
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
     return (
-        <div>
-            <h2>Product List</h2>
+        <ContainerList>
+            <h1>
+                <FormattedMessage 
+                    id="product_list"
+                    defaultMessage='View our options'
+                />
+            </h1>
             {products.map(product => (
                 <ProductCard
                     key={product.id}
@@ -24,7 +32,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                     description={product.description}
                 />
             ))}
-        </div>
+        </ContainerList>
     );
 };
 

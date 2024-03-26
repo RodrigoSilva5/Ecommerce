@@ -1,25 +1,49 @@
+import React from 'react';
+import { FormattedMessage } from 'react-intl';
 import { Link } from 'react-router-dom';
+import { ProductCardProps } from '../../interfaces/product';
+import { useCart } from '../../hooks/cart';
+import { CardContainer, ProductImage, ProductDescription, ProductPrice } from './styles';
+import { StyledLink } from '../../styles/link';
 
-interface ProductCardProps {
-    imageUrl: string;
-    price: number;
-    description: string;
-    productId: number;
-}
+import { Button, LogoutButton } from '../../styles/button';
+const ProductCard: React.FC<ProductCardProps> = ({ imageUrl, price, description, productId, buttonDelete }) => {
+    const { addItem, deleteItem } = useCart();
 
-const ProductCard: React.FC<ProductCardProps> = ({ imageUrl, price, description, productId }) => {
+    function handleAddToCart() {
+        addItem({ imageUrl, price, description, productId });
+    }
+    
+
     return (
-        <div style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '20px', marginBottom: '20px' }}>
-            <img src={imageUrl} alt="Product" style={{ width: '100%', marginBottom: '10px' }} />
-            <p>Description: {description}</p>
-            <p>Price: ${price}</p>
+        <CardContainer>
+            <ProductImage src={imageUrl} alt="Product" />
+            <ProductDescription>
+                <FormattedMessage id='product_description' /> {description}
+            </ProductDescription>
+            <ProductPrice>
+                <FormattedMessage id='product_price' /> ${price}
+            </ProductPrice>
             <Link to={`/product/${productId}`}>
-                <button>Details</button>
+                <Button>
+                    <FormattedMessage id='button_details' />
+                </Button>
             </Link>
-            <Link to="/cart">
-                <button>Add to Cart</button>
-            </Link>
-        </div>
+            {buttonDelete ? 
+            <LogoutButton>
+                <FormattedMessage 
+                    id='remove_item_cart'
+                    defaultMessage={"Delete from cart"}
+                />
+            </LogoutButton> :
+            <StyledLink to={"/cart"} >
+            <Button onClick={handleAddToCart}>
+                <FormattedMessage id='button_cart' />
+            </Button>
+        </StyledLink>
+  }
+  
+        </CardContainer>
     );
 };
 
