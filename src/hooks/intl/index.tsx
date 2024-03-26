@@ -1,3 +1,4 @@
+import { createContext, useCallback, useContext, useMemo, useState } from 'react'
 import {IntlProvider} from 'react-intl'
 
 // Translated messages in French with matching IDs to what you declared
@@ -24,8 +25,12 @@ const messages = {
     title_product: "Product Details",
     description_product: "Description: ",
     price_product:" Price: ",
-    remove_item_cart:"Delete from cart"
-
+    remove_item_cart:"Delete from cart",
+    selected_theme: "Select Theme: ",
+    toggle_theme: "Toggle Theme",
+    change_language:"Change to Portuguese",
+    cart_end: "Finalize Purchase",
+    buy_here:"Buy Here"
 
     // 
   },
@@ -50,16 +55,50 @@ const messages = {
     title_product: "Detalhes do Produto",
     description_product:"Descrição: ",
     price_product:" Preço: ",
-    remove_item_cart:"Remover do carrinho"
+    remove_item_cart:"Remover do carrinho",
+    selected_theme: "Selecione o tema: ",
+    toggle_theme: "Mudar tema",
+    change_language:"Mudar para Ingles",
+    cart_end: "Finalizar Compra",
+    buy_here:"Compre aqui"
+
 
     // 
   }
 }
 
+type ThemeContextType = {
+  select: "pt_br" | "en";
+  languageChange: () => void;
+};
+
+const IntlContext = createContext<ThemeContextType>({ select: "pt_br", languageChange: () => {} })
+
 export default function LanguageProvider({children } : {children: React.ReactNode}) {
+  const [select, setSelect] = useState<"pt_br" | "en">("en");
+
+
+  const languageChange = useCallback(() => {
+    setSelect((prevSelect) => (prevSelect === "en" ? "pt_br" : "en"));
+  }, []);
+
+  const providerData =  useMemo(()=> {
+      return{
+        select,
+        languageChange
+      }
+  }, [select])
+
   return (
-    <IntlProvider messages={messages.pt_br} locale="pt-br" defaultLocale="en" >
-        {children}
-    </IntlProvider>
+    <IntlContext.Provider value={providerData}>
+      <IntlProvider messages={messages[select]} locale="pt-br" defaultLocale="en" >
+          {children}
+      </IntlProvider>
+    </IntlContext.Provider>
   )
 }
+
+
+export const useIntl = () => {
+  return useContext(IntlContext);
+};

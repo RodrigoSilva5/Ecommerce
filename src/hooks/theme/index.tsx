@@ -1,26 +1,11 @@
-import { useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import { ThemeProvider as Theme_Provider } from "styled-components";
 
-// // Define our button, but with the use of props.theme this time
-// const Button = styled.button`
-//   font-size: 1em;
-//   margin: 1em;
-//   padding: 0.25em 1em;
-//   border-radius: 3px;
+type ThemeContextType = {
+  select: "dark" | "light";
+  toggleTheme: () => void;
+};
 
-//   /* Color the border and text with theme.main */
-//   color: ${props => props.theme.main};
-//   border: 2px solid ${props => props.theme.main};
-// `;
-
-// // We are passing a default theme for Buttons that arent wrapped in the ThemeProvider
-// Button.defaultProps = {
-//   theme: {
-//     main: "#BF4F74"
-//   }
-// }
-
-// Define what props.theme will look like
 const theme = {
   dark: {
     main_colors: {
@@ -108,14 +93,25 @@ const theme = {
       text_color: "black"
   }
 };
+// Criar contexto para o tema
+const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType);
 
-export default function ThemeProvider({children} : {children: React.ReactNode}) {
-    const [select, setSelect] = useState<"dark"| "light">("light")
+// Hook customizado para utilizar o contexto do tema
+export const useTheme = () => {
+  return useContext(ThemeContext);
+};
 
-    return (
-    <Theme_Provider theme={theme[select]}>
-      {children}
-    </Theme_Provider>
-    )
-}
+// Provedor do tema
+export const ThemeProvider = ({ children }: {children: React.ReactNode}) => {
+  const [select, setSelect] = useState<"dark" | "light">("dark");
 
+  const toggleTheme = useCallback(() => {
+    setSelect((prevSelect) => (prevSelect === "dark" ? "light" : "dark"));
+  }, []);
+
+  return (
+    <ThemeContext.Provider value={{ select, toggleTheme }}>
+      <Theme_Provider theme={theme[select]}>{children}</Theme_Provider>
+    </ThemeContext.Provider>
+  );
+};

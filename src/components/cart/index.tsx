@@ -4,6 +4,7 @@ import { Button, LogoutButton } from "../../styles/button";
 import { FormattedMessage } from "react-intl";
 import { MainContainer } from "../../styles/mainContainer";
 import { useCart } from "../../hooks/cart";
+import { StyledLink } from "../../styles/link";
 
 // Estilos para o container dos produtos
 const ProductContainer = styled.div`
@@ -12,6 +13,7 @@ const ProductContainer = styled.div`
   padding: 20px;
   margin-bottom: 20px;
   display: flex;
+  align-items: center;
   ${props => props.theme.navbar_background}
 `;
 
@@ -30,6 +32,7 @@ const ProductContent = styled.div`
 const RemoveButton = styled(LogoutButton)`
   background-color: #f00;
   color: #fff;
+  height: fit-content;
 `;
 
 interface Product {
@@ -45,7 +48,7 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products, deleteItem }) => {
-  console.log(products)
+
   return (
     <div>
       {products.map(product => (
@@ -75,14 +78,24 @@ export const CartScreen = () => {
     return (
       <MainContainer>
         <ProductList products={cart} deleteItem={deleteItem} />
-        <Button>FINALIZAR</Button>
+        <Button onClick={() => alert("success")}>
+          <FormattedMessage 
+            id="cart_end"
+          />
+        </Button>
       </MainContainer>
     );
   }
 
   return (
     <MainContainer>
-      CART vazio
+        <StyledLink to={'/'}>
+          <Button>
+            <FormattedMessage 
+              id="buy_here"
+            />
+          </Button>
+        </StyledLink>
     </MainContainer>
   );
 };

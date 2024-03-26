@@ -8,3 +8,7 @@ export const NavContainer = styled.nav`
     align-items: center;
 `;
 
+export const ButtonsContainer  = styled.div`
+    display: flex;
+
+`

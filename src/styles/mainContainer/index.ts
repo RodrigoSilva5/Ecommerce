@@ -8,4 +8,6 @@ export const MainContainer = styled.main`
     align-items: center;
     justify-content: center;
     height: 100vh;
+    flex-direction: column;
+
 `

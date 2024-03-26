@@ -1,9 +1,11 @@
-import { NavContainer } from "./styles";
+import { ButtonsContainer, NavContainer } from "./styles";
 import { FormattedMessage } from "react-intl";
 import { LogoutButton } from "../../styles/button";
 import { StyledLi, StyledUl } from "../../styles/ul_li";
 import { StyledLink } from "../../styles/link";
 import { useAuth } from "../../hooks/auth";
+import SelectTheme from "../selectTheme";
+import { SelectLanguage } from "../selectLanguage";
  
 interface NavBarProps {
     links: string[];
@@ -20,14 +22,16 @@ export const NavBar = ({ links }: NavBarProps) => {
                     </StyledLi>
                 ))}
             </StyledUl>
-            <div>
+            <ButtonsContainer>
+                <SelectLanguage/>
+                <SelectTheme />
                 <LogoutButton onClick={signOut} >
                     <FormattedMessage
                     id="signout_button"
                     defaultMessage='Sign out'
                     />
                 </LogoutButton>
-            </div>
+            </ButtonsContainer>
         </NavContainer>
     );
 };

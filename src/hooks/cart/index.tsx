@@ -1,63 +1,46 @@
-import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import React, { createContext, useCallback, useContext, useMemo, useState, ReactNode } from "react";
 import { ProductCardProps } from '../../interfaces/product';
 
-
-interface CartContext{
+interface CartContext {
     cart: ProductCardProps[];
-    addItem:(product: ProductCardProps) => void; 
-    deleteItem:(id: string) => void; 
+    addItem: (product: ProductCardProps) => void;
+    deleteItem: (id: string) => void;
 }
 
-const CartContext = createContext<CartContext>({} as CartContext)
+const CartContext = createContext<CartContext | undefined>(undefined);
 
-export default function CartProvider({children}:{children: React.ReactNode}) { 
-    const [cart, setCart] = useState<object[]>([])
+export default function CartProvider({ children }: { children: ReactNode }) {
+    const [cart, setCart] = useState<ProductCardProps[]>([]);
 
-    const addItem = useCallback((
-    {imageUrl,
-    price,
-    description,
-    productId} : ProductCardProps
-    )=> {
-        setCart((prev) => [...prev, {
-            imageUrl,
-            price,
-            description,
-            productId
-        }])
+    const addItem = useCallback((product: ProductCardProps) => {
+        setCart(prev => [...prev, product]);
+    }, []);
 
-    }, [])
+    const deleteItem = useCallback((id: string) => {
+        setCart(prevCart => prevCart.filter(product => product.productId !== id));
+    }, []);
 
-    const deleteItem = useCallback((id: number) => {
-        if(!cart.length)
-            return
-        
-        setCart(prev => prev.filter(product => product.productId !== id))
-        console.log("passou")
-    }, [])
-
-        // memoize
-        const providerData = useMemo(() => {
-            return {
-                cart,
-                addItem,
-                deleteItem
-            };
-        }, [cart]);
-    
+    const providerData = useMemo(() => {
+        return {
+            cart,
+            addItem,
+            deleteItem
+        };
+    }, [cart, addItem, deleteItem]);
 
     return (
         <CartContext.Provider value={providerData}>
             {children}
         </CartContext.Provider>
-    )
+    );
 }
 
-export const useCart = () =>  {
+export const useCart = (): CartContext => {
     const context = useContext(CartContext);
 
-    if (!context)
-        throw new Error('useCart must be used within an AuthProvider');
+    if (!context) {
+        throw new Error('useCart must be used within a CartProvider');
+    }
 
-    return context;   
-}
+    return context;
+};
