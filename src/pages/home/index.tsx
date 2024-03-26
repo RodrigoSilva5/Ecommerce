@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { NavBar } from "../../components/navbar/NavBar";
 import { HomeContainer } from "./styles";
 import { Outlet } from "react-router-dom";
@@ -10,10 +11,11 @@ const Home = () => {
       <NavBar 
         links={["Home"]}
       />
+         <Outlet/>
       {/* listagem de produtos */}
-      <Outlet/>
     </HomeContainer>
     )
 }
+
 
 export {Home}

@@ -50,11 +50,10 @@ export const ProductsScreen = () =>{
     return (
     <>
 
-      {/* listagem de produtos */}
-      <ProductList 
-      products={data}
-      />
-
+                {/* listagem de produtos */}
+                <ProductList 
+                products={data}
+                />
                 {/* Paginação */}
                 <Pagination>
                 {Array.from({ length: totalPages }, (_, index) => (
@@ -63,7 +62,5 @@ export const ProductsScreen = () =>{
                     </PageNumber>
                 ))}
             </Pagination>
-    
-    
     </>
 )}

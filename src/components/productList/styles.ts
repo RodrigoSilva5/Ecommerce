@@ -8,6 +8,8 @@ export const ContainerList= styled.div`
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    height: 100%;
+    overflow: scroll;    
 
     & h1{
         color: ${props => props.theme.text_color};
@@ -17,6 +19,5 @@ export const ContainerList= styled.div`
     }
     @media screen and (min-width: 768px) {
         flex-wrap: nowrap;
-
 }
 `
