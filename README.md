@@ -31,9 +31,8 @@ Para executar este projeto localmente, siga estas etapas:
 1. Clone este repositório: `git clone https://github.com/seu-usuario/plataforma-receitas.git`
 2. Navegue até o diretório do projeto: `cd plataforma-receitas`
 3. Instale as dependências: `npm install`
-4. Inicie o servidor de desenvolvimento: `npm run dev`
-5. Inicie o servidor de que simula o back-end: `npm run backend`
-6. Abra o navegador e acesse `http://localhost:5173/`
+4. Inicie o servidor de desenvolvimento: `npm run start`
+5. Abra o navegador e acesse `http://localhost:5173/`
 
 Certifique-se de também iniciar o servidor JSON com o comando `json-server --watch db.json --port 5000`.
 
