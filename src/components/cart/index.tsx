@@ -39,12 +39,12 @@ interface Product {
   description: string;
   imageUrl: string;
   price: number;
-  productId: number;
+  productId: string;
 }
 
 interface ProductListProps {
   products: Product[];
-  deleteItem: (id: number) => void;
+  deleteItem: (id: string) => void;
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products, deleteItem }) => {

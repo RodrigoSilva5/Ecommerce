@@ -8,7 +8,7 @@ import { StyledLink } from '../../styles/link';
 
 import { Button, LogoutButton } from '../../styles/button';
 const ProductCard: React.FC<ProductCardProps> = ({ imageUrl, price, description, productId, buttonDelete }) => {
-    const { addItem, deleteItem } = useCart();
+    const { addItem } = useCart();
 
     function handleAddToCart() {
         addItem({ imageUrl, price, description, productId });

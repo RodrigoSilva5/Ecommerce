@@ -1,30 +1,56 @@
-# React + TypeScript + Vite
+# Projeto Final:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Bem-vindo ao projeto final do segundo módulo de React do bootcamp da Ada Tech em parceria com o iFood, do programa Vem Ser Tech.
 
-Currently, two official plugins are available:
+## Descrição
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este projeto é uma aplicação web desenvolvida usando React com Typescript. Ele utiliza diversas bibliotecas e frameworks para diferentes funcionalidades, incluindo:
 
-## Expanding the ESLint configuration
+- **axios**: Para realizar requisições HTTP para o servidor da API.
+- **formik**: Para facilitar a criação de formulários com React.
+- **yup**: Para validação de formulários.
+- **styled-components**: Para estilização com CSS-in-JS.
+- **react-router-dom**: Para roteamento dentro da aplicação.
+- **react-query**: Para gerenciamento de estados globais e manipulação de dados.
+- **react-intl**: Para internacionalização de texto.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Além disso, o projeto utiliza o **json-server** como servidor de API de desenvolvimento.
 
-- Configure the top-level `parserOptions` property like this:
+## Funcionalidades
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+- Visualização de receitas
+- Pesquisa de receitas por categoria ou nome
+- Cadastro de novas receitas
+- Edição e exclusão de receitas cadastradas
+- Internacionalização para diferentes idiomas
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Instalação
+
+Para executar este projeto localmente, siga estas etapas:
+
+1. Clone este repositório: `git clone https://github.com/seu-usuario/plataforma-receitas.git`
+2. Navegue até o diretório do projeto: `cd plataforma-receitas`
+3. Instale as dependências: `npm install`
+4. Inicie o servidor de desenvolvimento: `npm run dev`
+5. Inicie o servidor de que simula o back-end: `npm run backend`
+6. Abra o navegador e acesse `http://localhost:5173/`
+
+Certifique-se de também iniciar o servidor JSON com o comando `json-server --watch db.json --port 5000`.
+
+## Contribuindo
+
+Aceitamos contribuições! Se você deseja contribuir com este projeto, siga estas etapas:
+
+1. Fork este repositório
+2. Crie sua branch de feature: `git checkout -b minha-feature`
+3. Faça commit das suas alterações: `git commit -am 'Adiciona nova funcionalidade'`
+4. Envie para o repositório remoto: `git push origin minha-feature`
+5. Envie um pull request
+
+## Autores
+
+- Rodrigo - [Link para o Perfil do Autor](https://github.com/RodrigoSilva5)
+
+## Licença
+
+Este projeto está licenciado sob a Licença MIT.

@@ -1,7 +1,7 @@
 import { Key } from "react";
 
 interface ProductCardProps {
-    id?: Key | null | undefined | number;
+    id?: Key | null | undefined | number | React.ReactNode;
     imageUrl: string;
     price: number;
     description: string;

@@ -1,4 +1,3 @@
-import styled from "styled-components";
 import { NavBar } from "../../components/navbar/NavBar";
 import { HomeContainer } from "./styles";
 import { Outlet } from "react-router-dom";

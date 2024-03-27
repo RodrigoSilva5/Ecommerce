@@ -3,7 +3,7 @@ import { useIntl } from "../../hooks/intl"
 import { FormattedMessage } from "react-intl"
 
 export const SelectLanguage = () => {
-    const {languageChange, select} = useIntl()
+    const {languageChange} = useIntl()
     return <>
         <ButtonTheme onClick={languageChange}>
             <FormattedMessage 

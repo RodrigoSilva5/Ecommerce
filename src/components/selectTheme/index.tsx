@@ -3,7 +3,7 @@ import { useTheme } from "../../hooks/theme";
 import styled from "styled-components";
 
 const SelectTheme = () => {
-    const { select, toggleTheme } = useTheme();
+    const { toggleTheme } = useTheme();
 
   return (
     <div>

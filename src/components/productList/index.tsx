@@ -2,6 +2,7 @@ import { FormattedMessage } from "react-intl";
 import ProductCard from "../productCard";
 import { ContainerList } from "./styles";
 import { ProductCardProps } from "../../interfaces/product";
+import { Key } from "react";
 
 interface Product {
     id: number;
@@ -15,6 +16,11 @@ interface ProductListProps {
 }
 
 const ProductList: React.FC<ProductListProps> = ({ products }) => {
+    if (!Array.isArray(products)) {
+        // Se não for, retornamos algo para lidar com esse caso
+        return <div>Products is not an array</div>;
+      }
+
     return (
         <ContainerList>
             <h1>
@@ -23,7 +29,7 @@ const ProductList: React.FC<ProductListProps> = ({ products }) => {
                     defaultMessage='View our options'
                 />
             </h1>
-            {products.map(product => (
+            {products.map((product: { id: Key | null | undefined; imageUrl: string; price: number; description: string; }) => (
                 <ProductCard
                     key={product.id}
                     productId={product.id}

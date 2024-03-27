@@ -8,11 +8,8 @@ import {
     useState
 } from 'react';
 import { User } from '../interfaces/user';
-// import { client } from '../network/api';
-import { client } from '../../network';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
-import Login from '../../components/login';
 import { redirect } from 'react-router-dom';
 
 interface AuthCredentials {
@@ -24,7 +21,7 @@ interface AuthContextData {
     user: User | null;
     signIn?(credentials: AuthCredentials): void;
     signOut?(): void;
-    signup?(credentials: SignUpParams): void | undefined;
+    signup?(credentials: SignUpParams): Promise<void> | undefined;
     login?(credendtials: LoginParams): void;
 }
 interface LoginParams {
@@ -60,7 +57,7 @@ export default function AuthProvider({
         return userJSON;
     })
 
-    const [accessToken, setAccessToken ] = useState<AccessToken | null>(() => {
+    const [, setAccessToken ] = useState<AccessToken | null>(() => {
         const accessToken = localStorage.getItem('accessToken');
 
         if (!accessToken) {
